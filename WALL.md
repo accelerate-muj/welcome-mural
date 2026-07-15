@@ -11,3 +11,4 @@ If you are joining our club for the first time, write your name and a project th
 | Name | Project I'd Like to Do / Build | GitHub Username |
 | :--- | :--- | :--- |
 | Shashwat Deep | Running app | @shashwat.deep |
+| Divyansh Tripathi | Timer | @theqmlguy |
