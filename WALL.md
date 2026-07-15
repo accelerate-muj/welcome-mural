@@ -4,7 +4,7 @@ Welcome to **Accelerate**! 🚀
 
 This welcome wall is the first stop for everyone joining our club. It's a space to introduce yourself, share your ambitions, and connect with other creators, builders, and developers.
 
-If you are joining Accelerate for the first time, welcome aboard! Please add your name and a project you'd love to work on or build during your time with us.
+If you are joining our club for the first time, write your name and one project that you would like to do.
 
 ---
 
