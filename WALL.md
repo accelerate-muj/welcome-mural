@@ -11,7 +11,7 @@ If you are joining Accelerate for the first time, welcome aboard! Please add you
 ## 🚀 How to Add Yourself
 1. **Fork** this repository.
 2. **Clone** your fork locally.
-3. Add a new row to the table in [wall.md](file:///c:/Users/dtmat/Dropbox/Github%20Repos/welcome-mural/wall.md) with your details.
+3. Add a new row to the table in [WALL.md](file:///c:/Users/dtmat/Dropbox/Github%20Repos/welcome-mural/WALL.md) with your details.
 4. **Commit** and **push** your changes.
 5. Create a **Pull Request (PR)** back to the main repository.
 
