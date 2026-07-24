@@ -12,3 +12,4 @@ If you are joining our club for the first time, write your name and a project th
 | :--- | :--- | :--- |
 | Shashwat Deep | Running app | @shashwat.deep |
 | Divyansh Tripathi | Timer | @theqmlguy |
+| Rachit Mishra | Musicc PLayer | Rached-ps | 
