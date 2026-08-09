@@ -1,343 +1,101 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Accelerate - Welcome Mural</title>
-  <meta name="description" content="Enter your name and a project that you would like to do along with your GitHub ID.">
-  
-  <!-- Inter Font for modern, clean typography -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
-  <style>
-    :root {
-      --bg-color: #09090b;
-      --card-bg: #18181b;
-      --card-border: #27272a;
-      --card-border-hover: #3f3f46;
-      --text-primary: #f4f4f5;
-      --text-secondary: #a1a1aa;
-      --accent: #6366f1;
-      --accent-hover: #818cf8;
-    }
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Welcome Mural — Accelerate</title>
+    <meta
+      name="description"
+      content="The wall where everyone joining Accelerate introduces themselves and the project they want to build."
+    />
+    <meta name="theme-color" content="#0a0a0a" />
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/brand/favicon-32.png" />
+    <link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png" />
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    <!--
+      Load order matters: fonts, then the design system, then this project's
+      components. There is deliberately no Google Fonts link — the three faces
+      are self-hosted and embedded, so the page has no CDN dependency and leaks
+      nothing to a third party. See assets/fonts/README.md.
+    -->
+    <link rel="stylesheet" href="assets/fonts/fonts.css" />
+    <link rel="stylesheet" href="assets/accelerate.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-    body {
-      background-color: var(--bg-color);
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      color: var(--text-primary);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding-top: 3rem;
-      padding-bottom: 0;
-    }
+  <body class="accelerate-field">
+    <a class="skip-link" href="#main">Skip to main content</a>
 
-    header {
-      width: 100%;
-      max-width: 1200px;
-      margin-bottom: 3rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      padding: 0 1.5rem;
-    }
-
-    .title-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    h1 {
-      font-size: 2rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-    }
-
-    p {
-      color: var(--text-secondary);
-      font-size: 1rem;
-      max-width: 600px;
-      line-height: 1.5;
-    }
-
-    /* Join Button */
-    .join-button {
-      background-color: var(--text-primary);
-      color: var(--bg-color);
-      padding: 0.6rem 1.2rem;
-      border-radius: 6px;
-      font-weight: 500;
-      font-size: 0.9rem;
-      text-decoration: none;
-      transition: opacity 0.2s;
-    }
-
-    .join-button:hover {
-      opacity: 0.9;
-    }
-
-    /* Grid Layout */
-    .grid {
-      width: 100%;
-      max-width: 1200px;
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 4rem;
-      padding: 0 1.5rem;
-    }
-
-    /* Cards */
-    .card {
-      background-color: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 10px;
-      padding: 1.5rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 1.5rem;
-      transition: border-color 0.2s, transform 0.2s;
-    }
-
-    .card:hover {
-      border-color: var(--card-border-hover);
-      transform: translateY(-2px);
-    }
-
-    .card-name {
-      font-size: 1.1rem;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-    }
-
-    .card-project {
-      color: var(--text-secondary);
-      font-size: 0.95rem;
-      line-height: 1.5;
-    }
-
-    .card-github {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      color: var(--accent);
-      font-size: 0.85rem;
-      text-decoration: none;
-      font-weight: 500;
-      align-self: flex-start;
-    }
-
-    .card-github:hover {
-      color: var(--accent-hover);
-      text-decoration: underline;
-    }
-
-    /* Loading Skeletons */
-    .skeleton-card {
-      background-color: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 10px;
-      padding: 1.5rem;
-      height: 160px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .skeleton-line {
-      height: 14px;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 4px;
-      animation: pulse 1.5s infinite ease-in-out;
-    }
-    .skeleton-line.title { width: 50%; height: 18px; margin-bottom: 0.75rem; }
-    .skeleton-line.desc { width: 85%; }
-    .skeleton-line.link { width: 30%; }
-
-    @keyframes pulse {
-      0% { opacity: 0.3; }
-      50% { opacity: 0.6; }
-      100% { opacity: 0.3; }
-    }
-
-    footer {
-      margin-top: auto;
-      width: 100%;
-      border-top: 1px solid var(--card-border);
-      padding: 1.5rem;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .footer-link {
-      color: var(--text-secondary);
-      font-size: 0.85rem;
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-
-    .footer-link:hover {
-      color: var(--text-primary);
-    }
-
-    @media (max-width: 640px) {
-      body { padding-top: 2rem; }
-      h1 { font-size: 1.75rem; }
-      .grid { grid-template-columns: 1fr; }
-    }
-  </style>
-</head>
-<body>
-
-  <header>
-    <div class="title-row">
-      <h1>Welcome Mural</h1>
-      <a href="https://github.com/accelerate-muj/welcome-mural/edit/main/WALL.md" class="join-button" target="_blank" rel="noopener">Add Yourself</a>
-    </div>
-    <p>Enter your name and a project that you would like to do along with your GitHub ID.</p>
-  </header>
-
-  <main class="grid" id="grid-container">
-    <!-- Loading skeleton cards -->
-    <div class="skeleton-card">
-      <div>
-        <div class="skeleton-line title"></div>
-        <div class="skeleton-line desc"></div>
+    <header class="site-header">
+      <div class="wrap">
+        <p class="site-title">
+          <a href="https://accelerate-muj.github.io/">
+            <img class="site-logo" src="assets/brand/logo.png"
+                 srcset="assets/brand/logo.png 1x, assets/brand/logo@2x.png 2x"
+                 width="300" height="156" alt="Accelerate" />
+          </a>
+        </p>
+        <nav class="site-nav" aria-label="Site">
+          <a href="https://github.com/accelerate-muj/welcome-mural/edit/main/WALL.md">add-yourself</a>
+          <a href="https://github.com/accelerate-muj/welcome-mural">github</a>
+        </nav>
       </div>
-      <div class="skeleton-line link"></div>
-    </div>
-    <div class="skeleton-card">
-      <div>
-        <div class="skeleton-line title"></div>
-        <div class="skeleton-line desc"></div>
+    </header>
+
+    <main id="main" class="wrap" tabindex="-1">
+      <p class="prompt">cat WALL.md</p>
+      <h1>Everyone starts<br />as a stranger.<br /><span class="accent">Sign the wall.</span></h1>
+      <p class="lede">
+        The first stop for anyone joining Accelerate. Add your name, the project you want to build,
+        and your GitHub handle — it is one line in a Markdown table, and it is probably the smallest
+        pull request you will ever open.
+      </p>
+
+      <p><a class="btn-cta" href="https://github.com/accelerate-muj/welcome-mural/edit/main/WALL.md">Add yourself</a></p>
+
+      <hr class="trajectory" />
+
+      <p class="count" id="count">Loading the wall…</p>
+
+      <ul class="grid" id="grid" aria-labelledby="count">
+        <!-- Placeholders, replaced once WALL.md loads. aria-hidden so a screen
+             reader is not read three empty cards. -->
+        <li class="skeleton-card" aria-hidden="true">
+          <div class="skeleton-line title"></div>
+          <div class="skeleton-line desc"></div>
+          <div class="skeleton-line link"></div>
+        </li>
+        <li class="skeleton-card" aria-hidden="true">
+          <div class="skeleton-line title"></div>
+          <div class="skeleton-line desc"></div>
+          <div class="skeleton-line link"></div>
+        </li>
+        <li class="skeleton-card" aria-hidden="true">
+          <div class="skeleton-line title"></div>
+          <div class="skeleton-line desc"></div>
+          <div class="skeleton-line link"></div>
+        </li>
+      </ul>
+
+      <noscript>
+        <p class="lede">
+          This page renders the wall from
+          <a href="https://github.com/accelerate-muj/welcome-mural/blob/main/WALL.md">WALL.md</a>
+          with JavaScript. Read it directly — it is a Markdown table.
+        </p>
+      </noscript>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <p>
+          <a href="https://github.com/accelerate-muj">Accelerate</a>, the open-source club at
+          Manipal University Jaipur.
+        </p>
+        <p class="footer-command">git commit -m "add me to the wall"</p>
       </div>
-      <div class="skeleton-line link"></div>
-    </div>
-    <div class="skeleton-card">
-      <div>
-        <div class="skeleton-line title"></div>
-        <div class="skeleton-line desc"></div>
-      </div>
-      <div class="skeleton-line link"></div>
-    </div>
-  </main>
+    </footer>
 
-  <footer>
-    <a href="https://github.com/accelerate-muj/welcome-mural" target="_blank" rel="noopener" class="footer-link">Accelerate Club</a>
-  </footer>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const gridContainer = document.getElementById('grid-container');
-
-      fetch('./WALL.md')
-        .then(response => {
-          if (!response.ok) {
-            throw new Error(`Failed to load WALL.md: ${response.statusText}`);
-          }
-          return response.text();
-        })
-        .then(markdown => {
-          const lines = markdown.split(/\r?\n/);
-          
-          const tableLines = lines.filter(line => {
-            const trimmed = line.trim();
-            if (!trimmed.startsWith('|') || !trimmed.endsWith('|')) return false;
-            
-            const lower = trimmed.toLowerCase();
-            if (lower.includes('name') && lower.includes('project')) return false;
-            if (trimmed.includes('---') || trimmed.includes(':---')) return false;
-            
-            return true;
-          });
-
-          const entries = tableLines.map(line => {
-            const cols = line.split('|').map(c => c.trim()).filter((_, idx, arr) => idx > 0 && idx < arr.length - 1);
-            if (cols.length < 2) return null;
-
-            const rawName = cols[0] || '';
-            const name = rawName.replace(/\*\*|\*/g, '').trim();
-            const project = cols[1] || '';
-            const rawGithub = cols[2] || '';
-            
-            let githubName = '';
-            let githubUrl = '';
-
-            const mdLinkRegex = /\[@?([^\]]+)\]\(([^)]+)\)/;
-            const match = rawGithub.match(mdLinkRegex);
-            if (match) {
-              githubName = match[1];
-              githubUrl = match[2];
-            } else {
-              githubName = rawGithub.replace(/[@]/g, '').trim();
-              githubUrl = githubName ? `https://github.com/${githubName}` : '';
-            }
-
-            return { name, project, githubName, githubUrl };
-          }).filter(entry => entry !== null && entry.name !== '');
-
-          gridContainer.innerHTML = '';
-
-          if (entries.length === 0) {
-            gridContainer.innerHTML = `
-              <div style="grid-column: 1 / -1; text-align: center; color: var(--text-secondary); padding: 3rem 0;">
-                No entries found in WALL.md yet. Be the first to join!
-              </div>
-            `;
-            return;
-          }
-
-          entries.forEach(entry => {
-            const card = document.createElement('div');
-            card.className = 'card';
-
-            let githubHTML = '';
-            if (entry.githubName) {
-              githubHTML = `
-                <a href="${entry.githubUrl}" class="card-github" target="_blank" rel="noopener">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                  </svg>
-                  @${entry.githubName}
-                </a>
-              `;
-            }
-
-            card.innerHTML = `
-              <div>
-                <div class="card-name">${entry.name}</div>
-                <div class="card-project">${entry.project}</div>
-              </div>
-              ${githubHTML}
-            `;
-
-            gridContainer.appendChild(card);
-          });
-        })
-        .catch(err => {
-          console.error(err);
-          gridContainer.innerHTML = `
-            <div style="grid-column: 1 / -1; text-align: center; color: #ef4444; padding: 3rem 0;">
-              Failed to load entries from WALL.md.
-            </div>
-          `;
-        });
-    });
-  </script>
-</body>
+    <script src="mural.js"></script>
+  </body>
 </html>

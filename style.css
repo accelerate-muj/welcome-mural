@@ -1,0 +1,370 @@
+/*
+ * Welcome Mural — components only.
+ *
+ * The design system (tokens, the three type voices, focus, motion, motifs)
+ * lives in assets/accelerate.css, copied from college-materials, which is its
+ * canonical home. Link it before this file. DESIGN.md explains the reasoning;
+ * read it before changing a colour here.
+ *
+ * Nothing below defines a raw colour — everything resolves through a token.
+ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--paper);
+  -webkit-text-size-adjust: 100%;
+}
+
+.wrap {
+  width: 100%;
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* --- Skip link ------------------------------------------------------------ */
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 10;
+  padding: 0.75rem 1.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  background: var(--flare);
+  color: var(--ink); /* 5.0:1 on --flare */
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  left: 0;
+}
+
+/* --- Header --------------------------------------------------------------- */
+
+.site-header {
+  border-bottom: 1px solid var(--hairline);
+  background: rgba(10, 10, 10, 0.75);
+  backdrop-filter: blur(8px);
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+
+.site-header .wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1.5rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.site-title {
+  margin: 0;
+  line-height: 0;
+}
+
+.site-title a {
+  display: inline-block;
+  text-decoration: none;
+}
+
+.site-title a:hover .site-logo {
+  opacity: 0.85;
+}
+
+.site-nav {
+  margin-left: auto;
+  display: flex;
+  gap: 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+}
+
+.site-nav a {
+  color: var(--paper-dim);
+  text-decoration: none;
+  padding-bottom: 0.15rem;
+  border-bottom: 1px solid transparent;
+}
+
+.site-nav a:hover {
+  color: var(--paper);
+  border-bottom-color: var(--flare);
+}
+
+/* --- Masthead ------------------------------------------------------------- */
+
+main {
+  flex: 1;
+  padding: 3.5rem 0 5rem;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 1.4rem + 4.2vw, 4.5rem);
+  font-weight: 400;
+  line-height: 0.98;
+  letter-spacing: 0.005em;
+  text-transform: uppercase;
+  margin: 0 0 1rem;
+}
+
+.lede {
+  font-size: 1.1rem;
+  color: var(--paper-dim);
+  max-width: 44rem;
+  margin: 0 0 2rem;
+}
+
+a {
+  color: var(--flare);
+}
+
+a:hover {
+  color: var(--flare-bright);
+}
+
+.count {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--paper-dim);
+  margin: 0 0 1rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--hairline);
+}
+
+/* --- Join button: the one crimson fill on the page ------------------------ */
+
+.btn-cta {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  background: var(--flare);
+  border: 1px solid var(--flare);
+  border-radius: var(--radius);
+  color: var(--ink); /* 5.0:1 on --flare */
+  text-decoration: none;
+}
+
+.btn-cta:hover {
+  background: var(--flare-bright);
+  border-color: var(--flare-bright);
+  color: var(--ink);
+}
+
+/* --- The wall ------------------------------------------------------------- */
+
+.grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 1.3rem 1.35rem 1.15rem;
+  background: var(--ink-raised);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+/* The crimson edge lights only on the card being pointed at. */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 2px;
+  background: var(--flare);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.15s ease;
+}
+
+.card:hover,
+.card:focus-within {
+  background: var(--ink-hover);
+  border-color: var(--hairline-strong);
+}
+
+.card:hover::before,
+.card:focus-within::before {
+  transform: scaleY(1);
+}
+
+/* Names and projects are free text from a Markdown table, so a long unbroken
+ * string is a realistic input rather than a theoretical one. Wrap it instead of
+ * letting it spill out of the card. */
+.card-name,
+.card-project,
+.card-github {
+  overflow-wrap: anywhere;
+}
+
+.card-name {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--paper);
+  margin-bottom: 0.4rem;
+}
+
+.card-project {
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--paper-dim);
+  margin: 0;
+}
+
+.card-github {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: auto;
+  padding-top: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--paper-dim);
+  text-decoration: none;
+  align-self: flex-start;
+}
+
+.card-github svg {
+  flex: none;
+}
+
+.card-github:hover {
+  color: var(--flare-bright);
+}
+
+/* --- Loading and failure -------------------------------------------------- */
+
+.skeleton-card {
+  height: 9.5rem;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius);
+  background: var(--ink-raised);
+  padding: 1.3rem 1.35rem;
+}
+
+.skeleton-line {
+  height: 0.7rem;
+  border-radius: 2rem;
+  background: var(--hairline);
+  margin-bottom: 0.75rem;
+  animation: pulse 1.6s ease-in-out infinite;
+}
+
+.skeleton-line.title {
+  width: 55%;
+  height: 1rem;
+}
+
+.skeleton-line.desc {
+  width: 85%;
+}
+
+.skeleton-line.link {
+  width: 40%;
+  margin-top: 2.2rem;
+  margin-bottom: 0;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.45;
+  }
+}
+
+.notice {
+  grid-column: 1 / -1;
+  padding: 2rem;
+  border: 1px dashed var(--hairline-strong);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--paper-dim);
+}
+
+.notice.error {
+  border-style: solid;
+  border-color: var(--flare);
+  background: rgba(238, 59, 68, 0.12);
+  color: var(--paper);
+}
+
+/* --- Footer --------------------------------------------------------------- */
+
+.site-footer {
+  border-top: 1px solid var(--hairline);
+  padding: 2.5rem 0;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  line-height: 1.8;
+  color: var(--paper-dim);
+}
+
+.site-footer p {
+  margin: 0 0 0.35rem;
+}
+
+.site-footer a {
+  color: var(--paper-dim);
+  text-decoration: none;
+  border-bottom: 1px solid var(--hairline-strong);
+}
+
+.site-footer a:hover {
+  color: var(--flare-bright);
+  border-bottom-color: var(--flare);
+}
+
+.footer-command::before {
+  content: "$ ";
+  color: var(--flare);
+}
+
+@media (max-width: 30rem) {
+  main {
+    padding-top: 2.5rem;
+  }
+
+  .site-nav {
+    width: 100%;
+    margin-left: 0;
+    gap: 1.25rem;
+  }
+}
