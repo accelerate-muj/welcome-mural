@@ -8,8 +8,9 @@ If you are joining our club for the first time, write your name and a project th
 
 ## 🎨 The Wall
 
-| Shanvi Ashmita | Data Analysis | shanvi-cyber|
+| Name | Project I'd Like to Do / Build | GitHub Username |
 | :--- | :--- | :--- |
+| Asmeet Chakrabarti | Campus Dead Drop| @asmeetchakrabarti6-code
 | Shashwat Deep | Running app | @shashwat.deep |
 | Divyansh Tripathi | Timer | @theqmlguy |
-| Yusuf Husain | Object Detection Model | @YHK01
+| Sudhanshu pandey | Timer | @psudhanshu2208 |
