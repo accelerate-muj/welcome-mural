@@ -12,5 +12,7 @@ If you are joining our club for the first time, write your name and a project th
 | :--- | :--- | :--- |
 | Shashwat Deep | Running app | @shashwat.deep |
 | Divyansh Tripathi | Timer | @theqmlguy |
-Ritvick Drolia | Data Science Analysis or Cyber Security Project / Building apps | @Ritvick-ei
-| Piyush Pandey | Medicine reminder app | @Piyush010608
+Ritvick Drolia | Data Science Analysis or Cyber Security Project / Building apps | @Ritvick-ei |
+| Arush Tyagi | Calculator | @AT1Arush
+| Ayush Ranjan | Drone Detection Model | @voidAyush-tsx |
+|Bhoomi Tiwari| AI-NPC behavior Game| @RBLXQUEEN |
