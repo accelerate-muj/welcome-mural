@@ -10,6 +10,11 @@ If you are joining our club for the first time, write your name and a project th
 
 | Name | Project I'd Like to Do / Build | GitHub Username |
 | :--- | :--- | :--- |
+| Asmeet Chakrabarti | Campus Dead Drop| @asmeetchakrabarti6-code
+| Shashwat Deep | Running app | @shashwat.deep |
+| Divyansh Tripathi | Timer | @theqmlguy |
+| Sudhanshu pandey | Timer | @psudhanshu2208 |
+| Ayurvi Agarwal| calculator | ayurviagarwal123 |
 | Shashwat Deep | Running app | @shashwat.deep |
 | Divyansh Tripathi | Timer | @theqmlguy |
 | Stuti Dhawan | Cognify Agent | Stuti-Dhawan |
