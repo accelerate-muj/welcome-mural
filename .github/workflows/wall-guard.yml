@@ -1,0 +1,29 @@
+name: Wall guard
+
+# Blocks a pull request that would remove somebody from WALL.md. See
+# .github/scripts/check-wall.mjs for why this is necessary.
+on:
+  pull_request:
+    paths:
+      - "WALL.md"
+
+permissions:
+  contents: read
+
+jobs:
+  no-names-removed:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Need the base branch too, so the check can diff names against it.
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Check that no name was removed
+        run: |
+          git fetch origin "${{ github.base_ref }}" --depth=1
+          node .github/scripts/check-wall.mjs "origin/${{ github.base_ref }}"
