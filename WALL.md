@@ -8,8 +8,9 @@ If you are joining our club for the first time, write your name and a project th
 
 ## 🎨 The Wall
 
-| Shanvi Ashmita | Data Analysis | shanvi-cyber|
+| Name | Project I'd Like to Do / Build | GitHub Username |
 | :--- | :--- | :--- |
 | Shashwat Deep | Running app | @shashwat.deep |
 | Divyansh Tripathi | Timer | @theqmlguy |
+| Soumyadip Nandi | Password Generator | @soumyadip-nandi |
 Ritvick Drolia | Data Science Analysis or Cyber Security Project / Building apps | @Ritvick-ei
