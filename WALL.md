@@ -15,6 +15,7 @@ If you are joining our club for the first time, write your name and a project th
 
 | Name | Project I'd Like to Do / Build | GitHub Username |
 | :--- | :--- | :--- |
+| Rachit Mishra | Musicc PLayer | @Rached-ps |
 | Shanvi Ashmita | Data Analysis | @shanvi-cyber |
 | Shashwat Deep | Running app | @shashwat-deep |
 | Divyansh Tripathi | Timer | @theqmlguy |
@@ -36,3 +37,5 @@ If you are joining our club for the first time, write your name and a project th
 | Madhavan V Nair | | @Madhavan-V-Nair |
 | Harshita Chokhani | GuardianGrid | @HarshitaChokhani |
 | Vidha Singh Chauhan | personal website | @Vidhaaaaaa |
+| Bhoomi Tiwari | AI-NPC behavior Game | @RBLXQUEEN |
+| Surya Pratap Singh | AI & ML projects | @hellosurya987-design |
