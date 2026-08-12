@@ -1,17 +1,13 @@
 #!/usr/bin/env node
 /**
- * Fails a pull request that removes somebody from WALL.md.
+ * Fails a pull request that removes a name from WALL.md.
  *
- * Why this exists: contributors edit WALL.md in the GitHub web editor, which
- * saves the whole file against whatever their fork's base was when they opened
- * the page. Every save silently discards rows added in between. On 2026-08-12
- * that had erased 14 of 21 names, and each loss looked like a successful
- * contribution: PR reviewed, merged, CI green, Pages deployed, name gone.
+ * The GitHub web editor saves the whole file against the fork's base at the
+ * time the page was opened, so a stale fork silently drops rows added since.
+ * Removals here are almost always accidental, so this turns them into a failed
+ * check rather than a lost entry.
  *
- * A removal is almost never intentional here, so this turns a silent wipe into
- * a red check before the merge button is available.
- *
- * Usage (in CI):  node .github/scripts/check-wall.mjs <base-ref>
+ * Usage: node .github/scripts/check-wall.mjs <base-ref>
  */
 import { readFileSync } from "node:fs";
 import { execFileSync } from "node:child_process";
@@ -19,8 +15,8 @@ import { execFileSync } from "node:child_process";
 const baseRef = process.argv[2] || "origin/main";
 const FILE = "WALL.md";
 
-/** Deliberately forgiving, matching mural.js: a row is any line with a pipe and
- *  a name, whether or not the contributor got the outer pipes right. */
+/** Lenient in the same way mural.js is: a row is any line with a pipe and a
+ *  name, whether or not the outer pipes are present. */
 function names(markdown) {
   const out = new Map();
   for (const line of String(markdown).split(/\r?\n/)) {

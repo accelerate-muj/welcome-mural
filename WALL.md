@@ -7,9 +7,9 @@ This welcome wall is the first stop for everyone joining our club. It's a space 
 If you are joining our club for the first time, write your name and a project that you would like to do along with your GitHub ID.
 
 > **Adding yourself:** put your row at the **end** of the table, and make sure the line
-> starts and ends with a `|`. If your fork is a few days old, sync it before editing —
-> the GitHub web editor saves the whole file, so an out-of-date copy can wipe rows other
-> people added after you opened it. That is how several names were lost previously.
+> starts and ends with a `|`. Sync your fork before editing — the web editor saves the
+> whole file, so an out-of-date copy can remove rows other people added after you
+> opened it.
 
 ## 🎨 The Wall
 

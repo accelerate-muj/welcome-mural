@@ -1,29 +1,36 @@
 name: Wall guard
 
-# Blocks a pull request that would remove somebody from WALL.md. See
-# .github/scripts/check-wall.mjs for why this is necessary.
+# Fails a pull request that would remove a name from WALL.md.
+# Runs on every pull request so the check is always reported and can safely be
+# marked required in branch protection; it exits early when WALL.md is untouched.
 on:
   pull_request:
-    paths:
-      - "WALL.md"
 
 permissions:
   contents: read
 
 jobs:
-  no-names-removed:
+  wall:
+    name: No names removed
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      # Actions are pinned to full commit SHAs because this org requires it
+      # (sha_pinning_required). A version tag is mutable, so a compromised tag
+      # could run arbitrary code in CI. SHAs match the ones already used in
+      # college-materials so the org stays on one set of versions.
+      - name: Check out the pull request
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
-          # Need the base branch too, so the check can diff names against it.
           fetch-depth: 0
 
-      - uses: actions/setup-node@v4
+      - name: Set up Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
-          node-version: "20"
+          node-version: 20
 
-      - name: Check that no name was removed
+      - name: Compare names against the base branch
+        env:
+          BASE_REF: ${{ github.base_ref }}
         run: |
-          git fetch origin "${{ github.base_ref }}" --depth=1
-          node .github/scripts/check-wall.mjs "origin/${{ github.base_ref }}"
+          git fetch --no-tags origin "$BASE_REF"
+          node .github/scripts/check-wall.mjs "origin/$BASE_REF"
