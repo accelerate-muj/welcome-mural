@@ -8,8 +8,10 @@ If you are joining our club for the first time, write your name and a project th
 
 ## 🎨 The Wall
 
-| Name | Project I'd Like to Do / Build | GitHub Username |
+| Shanvi Ashmita | Data Analysis | shanvi-cyber|
 | :--- | :--- | :--- |
 | Shashwat Deep | Running app | @shashwat.deep |
 | Divyansh Tripathi | Timer | @theqmlguy |
 | Stuti Dhawan | Cognify Agent | Stuti-Dhawan |
+Ritvick Drolia | Data Science Analysis or Cyber Security Project / Building apps | @Ritvick-ei
+| Piyush Pandey | Medicine reminder app | @Piyush010608
