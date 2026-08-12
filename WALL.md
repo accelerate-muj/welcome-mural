@@ -8,8 +8,8 @@ If you are joining our club for the first time, write your name and a project th
 
 ## 🎨 The Wall
 
-| Name | Project I'd Like to Do / Build | GitHub Username |
+| Shanvi Ashmita | Data Analysis | shanvi-cyber|
 | :--- | :--- | :--- |
-| Asmeet Chakrabarti | Campus Dead Drop| @asmeetchakrabarti6-code
 | Shashwat Deep | Running app | @shashwat.deep |
 | Divyansh Tripathi | Timer | @theqmlguy |
+Ritvick Drolia | Data Science Analysis or Cyber Security Project / Building apps | @Ritvick-ei
