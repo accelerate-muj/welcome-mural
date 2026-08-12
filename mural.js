@@ -56,26 +56,71 @@
     return GITHUB_HANDLE.test(candidate) ? candidate : null;
   }
 
+  /**
+   * Parses the wall table, deliberately forgiving about pipes.
+   *
+   * This used to require a row to both start AND end with `|`, and silently
+   * dropped anything else. That is the single most common mistake a first-time
+   * contributor makes in a markdown table, and it failed invisibly: the PR was
+   * reviewed, merged, CI went green, Pages deployed, and their name never
+   * appeared with nothing anywhere explaining why. Six people were lost that way.
+   *
+   * A line with a pipe and at least two cells is a wall entry. Anything that
+   * looks like an attempted entry but cannot be read is returned in `skipped`
+   * so the page can say so out loud instead of swallowing it.
+   */
   function parseWall(markdown) {
-    return String(markdown)
-      .split(/\r?\n/)
-      .filter(function (line) {
-        const trimmed = line.trim();
-        if (!trimmed.startsWith('|') || !trimmed.endsWith('|')) return false;
-        if (/^\|[\s:|-]+\|$/.test(trimmed)) return false; // the --- separator
-        const lower = trimmed.toLowerCase();
-        return !(lower.includes('name') && lower.includes('project')); // the header
-      })
-      .map(function (line) {
-        const cells = line.split('|').slice(1, -1).map(function (cell) {
-          return cell.trim();
-        });
-        if (cells.length < 2) return null;
-        return { name: plain(cells[0]), project: plain(cells[1]), handle: handleFrom(cells[2]) };
-      })
-      .filter(function (entry) {
-        return entry && entry.name;
-      });
+    const entries = [];
+    const skipped = [];
+
+    String(markdown).split(/\r?\n/).forEach(function (line) {
+      const trimmed = line.trim();
+      if (!trimmed || trimmed.indexOf('|') === -1) return;
+      if (trimmed.charAt(0) === '#' || trimmed.charAt(0) === '>') return;   // heading / blockquote
+      if (/^\|?[\s:|-]+\|?$/.test(trimmed)) return;                          // the --- separator
+      const lower = trimmed.toLowerCase();
+      if (lower.indexOf('name') !== -1 && lower.indexOf('project') !== -1) return; // header
+
+      // Tolerate a missing leading or trailing pipe.
+      const cells = trimmed
+        .replace(/^\|/, '')
+        .replace(/\|$/, '')
+        .split('|')
+        .map(function (cell) { return cell.trim(); });
+
+      if (cells.length < 2) { skipped.push(trimmed); return; }
+
+      const name = plain(cells[0]);
+      if (!name) { skipped.push(trimmed); return; }
+
+      // A stray empty cell (| Name | |Project| @handle |) shifts every column
+      // right, which is what put a project description in Shreyansh Kaushal's
+      // name slot. Drop empty cells after the name so positions line up again.
+      const rest = cells.slice(1).filter(function (c) { return c !== ''; });
+
+      // Columns are positional: project is the cell after the name, handle is
+      // last. Do NOT infer the handle by "which cell looks like a username" —
+      // "Calculator", "Timer" and "Robotics" are all valid GitHub handles, so
+      // content sniffing silently eats the project description.
+      var project = '';
+      var handle = null;
+
+      if (rest.length === 0) {
+        // Name only; nothing else to read.
+      } else if (rest.length === 1) {
+        // Two cells total: either "Name | @handle" or "Name | Project".
+        handle = handleFrom(rest[0]);
+        if (handle === null) project = plain(rest[0]);
+      } else {
+        project = plain(rest[0]);
+        handle = handleFrom(rest[rest.length - 1]);
+      }
+
+      entries.push({ name: name, project: project, handle: handle });
+    });
+
+    entries.skipped = skipped;
+    return entries;
   }
 
   function githubIcon() {
@@ -143,6 +188,21 @@
       entries.forEach(function (entry) {
         grid.appendChild(card(entry));
       });
+
+      // Say it out loud when a row could not be read. Somebody wrote their name
+      // in that line and deserves to know it did not make it, rather than the
+      // page quietly rendering one card fewer.
+      if (entries.skipped && entries.skipped.length) {
+        const warn = el(
+          'li',
+          'notice error',
+          entries.skipped.length === 1
+            ? '1 row in WALL.md could not be read and is not shown below. Check that it has a name and a GitHub username separated by | characters.'
+            : entries.skipped.length + ' rows in WALL.md could not be read and are not shown below. Check that each has a name and a GitHub username separated by | characters.'
+        );
+        grid.appendChild(warn);
+        console.warn('Unparseable WALL.md rows:', entries.skipped);
+      }
     })
     .catch(function (error) {
       console.error(error);
