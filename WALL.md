@@ -10,7 +10,7 @@ If you are joining our club for the first time, write your name and a project th
 
 | Shanvi Ashmita | Data Analysis | shanvi-cyber|
 | :--- | :--- | :--- |
-| Ayurvi Agarwal| calculator | ayurviagarwal123 |
+| Shashwat Deep | Running app | @shashwat.deep |
 | Divyansh Tripathi | Timer | @theqmlguy |
 Ritvick Drolia | Data Science Analysis or Cyber Security Project / Building apps | @Ritvick-ei
-Ishaan Gupta | @gupish
+| Arush Tyagi | Calculator | @AT1Arush
