@@ -12,5 +12,8 @@ If you are joining our club for the first time, write your name and a project th
 | :--- | :--- | :--- |
 | Shashwat Deep | Running app | @shashwat.deep |
 | Divyansh Tripathi | Timer | @theqmlguy |
+| Stuti Dhawan | Cognify Agent | Stuti-Dhawan |
 Ritvick Drolia | Data Science Analysis or Cyber Security Project / Building apps | @Ritvick-ei
 | Kartik Aryan | --- | @KAryan-33
+Tejash Sinha| building apps and games | @tejashsnh
+| Piyush Pandey | Medicine reminder app | @Piyush010608
