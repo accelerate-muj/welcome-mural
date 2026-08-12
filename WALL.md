@@ -35,3 +35,4 @@ If you are joining our club for the first time, write your name and a project th
 | Shreyansh Kaushal | To be a Cybersecurity expert for blue teaming | @Anonymous-noob-07 |
 | Madhavan V Nair | | @Madhavan-V-Nair |
 | Harshita Chokhani | GuardianGrid | @HarshitaChokhani |
+| Vidha Singh Chauhan | personal website | @Vidhaaaaaa |
