@@ -169,7 +169,11 @@
     grid.appendChild(item);
   }
 
-  fetch('./WALL.md')
+  // cache: 'no-store' matters here. GitHub Pages serves WALL.md with
+  // Cache-Control: max-age=600, so with default fetch caching a contributor who
+  // merges their PR and refreshes can miss their own name for ten minutes -
+  // indistinguishable, from their side, from the entry having been dropped.
+  fetch('./WALL.md', { cache: 'no-store' })
     .then(function (response) {
       if (!response.ok) throw new Error('WALL.md returned ' + response.status);
       return response.text();
