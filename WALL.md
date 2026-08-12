@@ -17,6 +17,7 @@ If you are joining our club for the first time, write your name and a project th
 | Ayurvi Agarwal| calculator | ayurviagarwal123 |
 | Shashwat Deep | Running app | @shashwat.deep |
 | Divyansh Tripathi | Timer | @theqmlguy |
+| Soumyadip Nandi | Password Generator | @soumyadip-nandi |
 | Stuti Dhawan | Cognify Agent | Stuti-Dhawan |
 Ritvick Drolia | Data Science Analysis or Cyber Security Project / Building apps | @Ritvick-ei
 | Kartik Aryan | --- | @KAryan-33
