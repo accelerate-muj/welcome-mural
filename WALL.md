@@ -10,5 +10,9 @@ If you are joining our club for the first time, write your name and a project th
 
 | Name | Project I'd Like to Do / Build | GitHub Username |
 | Ayushi Beohar | Calculator  | beoharayushi61-cmyk  |
+| Shanvi Ashmita | Data Analysis | shanvi-cyber|
+| :--- | :--- | :--- |
 | Shashwat Deep | Running app | @shashwat.deep |
 | Divyansh Tripathi | Timer | @theqmlguy |
+Ritvick Drolia | Data Science Analysis or Cyber Security Project / Building apps | @Ritvick-ei
+| Arush Tyagi | Calculator | @AT1Arush
