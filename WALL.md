@@ -12,4 +12,4 @@ If you are joining our club for the first time, write your name and a project th
 | :--- | :--- | :--- |
 | Shashwat Deep | Running app | @shashwat.deep |
 | Divyansh Tripathi | Timer | @theqmlguy |
-| Harshita Chokhani | GuardianGrid | @HarshitaChokhani
+| Harshita Chokhani | GuardianGrid | @HarshitaChokhani |
