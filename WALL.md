@@ -15,6 +15,7 @@ If you are joining our club for the first time, write your name and a project th
 | Divyansh Tripathi | Timer | @theqmlguy |
 | Sudhanshu pandey | Timer | @psudhanshu2208 |
 | Ayurvi Agarwal| calculator | ayurviagarwal123 |
+| Shashwat Deep | Running app | @shashwat.deep |
 | Divyansh Tripathi | Timer | @theqmlguy |
 Ritvick Drolia | Data Science Analysis or Cyber Security Project / Building apps | @Ritvick-ei
-Ishaan Gupta | @gupish
+| Piyush Pandey | Medicine reminder app | @Piyush010608
