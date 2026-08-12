@@ -14,3 +14,4 @@ If you are joining our club for the first time, write your name and a project th
 | Divyansh Tripathi | Timer | @theqmlguy |
 Ritvick Drolia | Data Science Analysis or Cyber Security Project / Building apps | @Ritvick-ei
 Tejash Sinha| building apps and games | @tejashsnh
+| Piyush Pandey | Medicine reminder app | @Piyush010608
