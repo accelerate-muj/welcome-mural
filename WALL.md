@@ -39,3 +39,4 @@ If you are joining our club for the first time, write your name and a project th
 | Vidha Singh Chauhan | personal website | @Vidhaaaaaa |
 | Bhoomi Tiwari | AI-NPC behavior Game | @RBLXQUEEN |
 | Surya Pratap Singh | AI & ML projects | @hellosurya987-design |
+| Ditya Lohiya | Rocket trajectory auto calculations | @dkdjwwpb2r-cloud |
