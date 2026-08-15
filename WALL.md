@@ -18,7 +18,7 @@ If you are joining our club for the first time, write your name and a project th
 | Rachit Mishra | Musicc PLayer | @Rached-ps |
 | Shanvi Ashmita | Data Analysis | @shanvi-cyber |
 | Shashwat Deep | Running app | @shashwat-deep |
-| Divyansh Tripathi | Timer | @theqmlguy |
+| Divyansh Tripathi | Small Language Model | @theqmlguy |
 | Asmeet Chakrabarti | Open Innovation Project - CampusDeadDrop | @asmeetchakrabarti6-code |
 | Yusuf Husain | Object Detection Model | @YHK01 |
 | Ishaan Gupta | | @gupish |
